@@ -1,0 +1,42 @@
+{
+    "name": "bharmath/pseudodoodle",
+    "description": "It's a framework that is like Doodle. It's name is: Fake Doodle",
+    "keywords": [
+        "css",
+        "js",
+        "less",
+        "mobile-first",
+        "responsive",
+        "front-end",
+        "framework",
+        "web",
+        "behaviour driven development"
+    ],
+    "authors": [
+        {
+            "name": "Balint Harmath"
+        }
+    ],
+    "used frameworks": [
+        "Bootstrap",
+        "jQuery",
+        "Behat",
+        "Mink"
+    ],
+    "type": "project",
+    "require-dev": {
+        "behat/behat": "^3.0",
+        "behat/mink": "^1.6",
+        "behat/mink-extension": "^2.0",
+        "behat/mink-goutte-driver": "^1.1",
+        "behat/mink-selenium2-driver": "^1.2"
+    },
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.3.x-dev"
+		}
+	},
+	"replace": {
+		"twitter/bootstrap": "self.version"
+	}
+}
