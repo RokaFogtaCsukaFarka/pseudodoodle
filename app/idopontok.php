@@ -207,6 +207,7 @@
 							
 				</table>
 				<br/>
+				<button type="button"class="btn btn-primary" onclick="window.location.replace('napok.php')">Előző</button>				
 				<input type="submit" class="btn btn-primary" id="ment" value="Következő"/>
 				
 			</form>

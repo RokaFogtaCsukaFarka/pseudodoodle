@@ -122,7 +122,7 @@
 				<input type="checkbox" name="email"/>Érvényes emailcím kérése<br/><br/>
 			</label>
 			</div>
-			
+			<button type="button"class="btn btn-primary" onclick="window.location.replace('idopontok.php')">Előző</button>		
 			<input type="submit" class="btn btn-primary" value="Következő"/>		
 		</form>
 	</body>

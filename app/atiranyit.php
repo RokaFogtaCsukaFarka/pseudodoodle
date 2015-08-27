@@ -78,29 +78,69 @@
 			
 			mysqli_close($kapcsolat);
 		?>
+	
+		<script type="text/javascript">
+			var nOfAdds = 2;
+
+			function addNode(n){
+	  			var divFG = $(#form_mails).add("div").addClass("form-group col-xs-4");
+				var label1 = createElement("label");
+				label1.setAttribute("for","name"+n);
+				divFG.appendChild(label1);
+				var ip1 = document.createElement("input");
+				ip1.setAttribute("type","text");
+				ip1.setAttribute("id","name"+n);
+				ip1.setAttribute("name","name"+n);
+				ip1.setAttribute("class","names form-control");
+				divFG.appendChild(ip1);
+				
+				var label2 = createElement("label");
+				label2.setAttribute("for","email"+n);
+				divFG.appendChild(label2);
+				var ip2 = document.createElement("input");
+				ip1.setAttribute("type","text");
+				ip1.setAttribute("id","email"+n);
+				ip1.setAttribute("name","email"+n);
+				ip1.setAttribute("class","emails form-control");
+				divFG.appendChild(ip2);
+
+				return 0;
+			}
+		</script>
 		
 	</head>
 
 	<body onunload="<?php sessionEnd()?>">
 	
 		<h1>Köszönjük, hogy létrehozta ezt a szavazást!</h1>
-		
-		<div id="udvozlet">
-			A szavazás az alábbi linken tekinthető meg! Ezt küldd tovább ismerőseidnek a szavazásban való részvételhez!
-		</div>
 			
-		Szavazás link: <a class="btn btn-default" href="<?php print $link;?>"><?php print $link;?></a>
-		<!-- Mailto: -->
+		<h2>Szavazás link:</h2> <br/> 
+		<a href="<?php print $link;?>"><?php print $link;?></a>
+
 		<br/>
-		<!--
+
 		Az alábbi űrlap kitöltésével levelet küldhetsz ismerőseidnek, hogy meghívd őket a szavazásra.
 		
-		<form id="form_idopontok" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-			<input type="text" class="emails" name="1"/> 
-			<input type="text" class="emails" name="2"/>
+		<form id="form_mails" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+			<div class="form-group">
+				<label for="name0">Név</label>
+				<input type="text" class="names form-control" id="name0" name="name0"/> 
+				<label for="email0">Email</label>
+				<input type="text" class="emails form-control" id="email0" name="email0"/> 
+			</div>
+			<div class="form-group">
+				<label for="name1">Név</label>
+				<input type="text" class="names form-control" id="name1" name="name1"/> 
+				<label for="email1">Email</label>
+				<input type="text" class="emails form-control" id="email1" name="email1"/> 
+			</div>
+			<button type="button" value="Személy hozzáadása" onclick="addNode(nOfAdds++)"> </button>
 			
-			<button type="button" value="Cím hozzáadása" onclick="addNode()"/>
-			<button value="Küldöm" />
+			<textarea class="form-control" placeholder="Add meg itt az üzenetet!">
+			
+			</textarea>
+
+			<button type="submit" value="Küldöm"> </button>
 		</form>
 		-->
 	</body>

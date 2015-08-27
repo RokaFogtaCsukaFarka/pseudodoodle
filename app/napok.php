@@ -46,13 +46,18 @@
 				inputText.setAttribute("data-provide","datepicker");
 				inputText.setAttribute("data-date-format","yyyy/mm/dd");
 				inputText.setAttribute("data-today-btn","true");
-				inputText.setAttribute("class","datepicker");
+				inputText.setAttribute("class","form-control col-xs-4");
 				inputText.setAttribute("name",n);   //Why doesn't it work??
 				inputText.setAttribute("value",n);
+				var newSpan=document.createElement("span");
+				newSpan.setAttribute("class","glyphicon glyphicon-calendar");
+				newSpan.setAttribute("aria-describerdby","form-control col-xs-4");
 				var newln=document.createElement("br");			
 				var element=document.getElementById("new_dates");
 				element.appendChild(newDev);
 				newDev.appendChild(inputText);
+				newDev.appendChild(newln);
+				newDev.appendChild(newln);
 				newDev.appendChild(newln);
 				return 0;
 			}
@@ -153,26 +158,29 @@
 		<form class="form-inline" id="idopont" action="idopontok.php" method="POST" onsubmit="<?php global $n; onSubmitFC($n); echo 'return checkTheForm('.$n.')'; ?>">     
 			<div class="form-group col-xs-4 ">	
 				<div class="input-group">	
-					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" class="datepicker" name="1" />
-					<span class="glyphicon glyphicon-calendar" aria-describerdby="datepicker"></span>
+					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" name="1" />
+					<span class="glyphicon glyphicon-calendar" aria-describerdby="form-control col-xs-4"></span>
 				</div>
 			</div>
+			<br/>	
 			<br/>	
 			<br/>	
 			<div class="form-group col-xs-4">		
 				<div class="input-group">	
-					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" class="datepicker" name="2" />
-					<span class="glyphicon glyphicon-calendar" aria-describerdby="datepicker"></span>
+					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" name="2" />
+					<span class="glyphicon glyphicon-calendar" aria-describerdby="form-control col-xs-4"></span>
 				</div>
 			</div>
+			<br/>	
 			<br/>	
 			<br/>	
 			<div class="form-group col-xs-4 ">		
 				<div class="input-group">	
-					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" class="datepicker" name="3" />
-					<span class="glyphicon glyphicon-calendar" aria-describerdby="datepicker"></span>
+					<input type="text" id=datepicker" class="form-control col-xs-4" data-provide="datepicker-inline" data-date-format="yyyy/mm/dd" data-today-btn="true" name="3" />
+					<span class="glyphicon glyphicon-calendar" aria-describerdby="form-control col-xs-4"></span>
 				</div>
 			</div>
+			<br/>	
 			<br/>	
 			<br/>	
 			<div id="new_dates">
@@ -180,8 +188,8 @@
 			<br/>	
 			<br/>	
 			<br/>	
-			<button type="button" class="btn btn-default" id="date_add" onclick="<?php echo('addOnClick('.++$n.')');?>">Dátumot hozzáad</button> <!--Még a name property nem változik meg $n++; hatására! -->
-			
+			<button type="button" class="btn btn-default" id="date_add" onclick="<?php echo('addOnClick('.++$n.')');?>">Dátumot hozzáad</button> <br/> <br/>	<!--Még a name property nem változik meg $n++; hatására! -->
+			<button type="button"class="btn btn-primary" onclick="window.location.replace('altalanos.php')">Előző</button>	
 			<input type="submit" class="btn btn-primary" id="ment" value="Következő" />
 		</form>
 	</body>
