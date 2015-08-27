@@ -24,6 +24,17 @@
 		<script type="text/javascript" src="/bootstrap/dist/js/npm.js"></script>-->
 
 		<?php
+			
+			if(isset($_POST['name0'])) 
+			{
+				$i=0;
+				foreach($_POST["email".$i] as $email)
+				{
+					mail($email,"Meghívás egy PseudoDoodle szavazáson való részvételre...",$_POST["message"]."<br/><br/>
+						A link pedig:".$_POST["link"]);
+				}
+			}
+				
 			$filename = "db.json";
 			$file = fopen( $filename, "r" );
 			if( $file == false )
@@ -68,14 +79,6 @@
 				session_destroy();
 			}
 			
-			if(isset($_POST['submit'])) 
-			{
-				while($_POST[$var]!=NULL)
-				{
-					mail($_POST[$var],"Invitation for a Pseudo Doodle Poll","Dear Mr./Mrs./Ms.,<br><br>you become this email to take part in a poll of mine.");
-				}
-			}
-			
 			mysqli_close($kapcsolat);
 		?>
 	
@@ -117,31 +120,33 @@
 		<h2>Szavazás link:</h2> <br/> 
 		<a href="<?php print $link;?>"><?php print $link;?></a>
 
-		<br/>
+		<br/><br/><br/>
 
-		Az alábbi űrlap kitöltésével levelet küldhetsz ismerőseidnek, hogy meghívd őket a szavazásra.
+		<h3>Űrlap a barátaid meghívására</h3>
+
 		
-		<form id="form_mails" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+		<form padding="10px" id="form_mails" class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 			<div class="form-group">
 				<label for="name0">Név</label>
 				<input type="text" class="names form-control" id="name0" name="name0"/> 
 				<label for="email0">Email</label>
 				<input type="text" class="emails form-control" id="email0" name="email0"/> 
 			</div>
+			<br/>
 			<div class="form-group">
 				<label for="name1">Név</label>
 				<input type="text" class="names form-control" id="name1" name="name1"/> 
 				<label for="email1">Email</label>
 				<input type="text" class="emails form-control" id="email1" name="email1"/> 
 			</div>
-			<button type="button" value="Személy hozzáadása" onclick="addNode(nOfAdds++)"> </button>
-			
-			<textarea class="form-control" placeholder="Add meg itt az üzenetet!">
-			
-			</textarea>
-
-			<button type="submit" value="Küldöm"> </button>
+			<br/><br/>
+			<button type="button" class="btn btn-default" onclick="addNode(nOfAdds++)">Személy hozzáadása</button>
+			<br/><br/>
+			<textarea class="form-control" name="message" placeholder="Add meg itt az üzenetet!"></textarea>	
+			<br/><br/>
+			<button type="button"class="btn btn-primary" onclick="window.location.replace('idopontok.php')">Előző</button>		
+			<input type="hidden" name="link" value="<?php echo $link;?>" />
+			<button type="submit" class="btn btn-primary"> Küldöm </button>
 		</form>
-		-->
 	</body>
 </html>
