@@ -1,18 +1,20 @@
 ﻿<!DOCTYPE>
-<?php
-		session_start();
-		
-		/*Session valuables initialized: not working as shows up eg. in the next page!*/
-		$_SESSION['sz_id']=0;
-		$_SESSION['nDates']=0;	
-		$_SESSION['nTime']=0;
-		
-		/*I decided to pass the SID in a cookie, as the POST method is used in passing through the form*/
-		ini_set('session.use_only_cookies','1');  
-?>
-	<!-- Only accepts three dates on the other side!-->
 <html>
 	<head>
+		<?php
+			session_start();
+			
+			/*Session valuables initialized: not working as shows up eg. in the next page!*/
+			$_SESSION['sz_id']=0;
+			$_SESSION['nDates']=0;	
+			$_SESSION['nTime']=0;
+			
+			/*I decided to pass the SID in a cookie, as the POST method is used in passing through the form*/
+			ini_set('session.use_only_cookies','1');  
+		?>
+		
+		<!-- Only accepts three dates on the other side!-->
+		
 		<title>Pseudo Doodle - Napok</title>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> <!-- This is responsible for the mobile friendliness -->

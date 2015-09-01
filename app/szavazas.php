@@ -1,8 +1,8 @@
-﻿<!--Style-ban a formázást légyszíves!! Emellett a mysqli_array_sz_idopont($sz_id,$kapcsolat) körül problémák adódtak.-->
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
+		<!-- Emellett a mysqli_array_sz_idopont($sz_id,$kapcsolat) körül problémák adódtak.-->
+		
 		<title>Pseudo Doodle - Szavazás</title>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> <!-- This is responsible for the mobile friendliness -->
@@ -160,7 +160,7 @@
 				die("Nem lehet kapcsolodni a MySQL kiszolgalohoz: ".mysqli_connect_error());
 			
 			/** 
-			*	This function returns a return value of the query below -> i.e. all the contents of a table which refers to this poll.
+			*	This function returns a return value of the query below: i.e. all the contents of a table which refers to this poll.
 			*	Since not only once I use this functionality, a function was to be created for it!
 			**/
 			function mysqli_array_sz_idopont($sz_id,$kapcsolat)
@@ -175,7 +175,7 @@
 			
 			if($array_szavazas_fetched==NULL)
 			{ 
-				echo "<script>document.write('A megadott szavazás hiányzik!');</script>"; 
+				echo "<script type='text/javascript'>document.write('A megadott szavazás hiányzik!');</script>"; 
 				exit;
 			}
 			

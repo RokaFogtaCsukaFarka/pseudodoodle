@@ -1,18 +1,20 @@
 ﻿<!DOCTYPE>
-<?php
-	session_start();
-	
-	if(isset($_SESSION["sz_id"]))
-		$sz_id=$_SESSION["sz_id"];	
-	else $sz_id=0;
-	if(isset($_SESSION["nDates"]))
-		$nodates=$_SESSION["nDates"];
-	else
-		$nodates=3;
-?>
-	<!-- Doesn't transmit and get data to the other side at all: prototype.js: ajax.googleapis.com bug-->
 <html>
 	<head>
+		<?php
+			session_start();
+			
+			if(isset($_SESSION["sz_id"]))
+				$sz_id=$_SESSION["sz_id"];	
+			else $sz_id=0;
+			if(isset($_SESSION["nDates"]))
+				$nodates=$_SESSION["nDates"];
+			else
+				$nodates=3;
+		?>
+		<!-- Doesn't transmit and get data to the other side at all: prototype.js:
+		ajax.googleapis.com bug-->
+		
 		<title>Pseudo Doodle - Időpontok</title>
 
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>		
@@ -175,16 +177,21 @@
 	<body>
 		<h2>Időpontok</h2>
 
-		<p>Ezen az oldalon megadhatja a dátumokhoz tartozó időpontokat is.</p>
+		<p>Ezen az oldalon megadhatja a dátumokhoz tartozó időpontokat is.
+		<!--
+			Initializing the JS n variable instead of $notime, that will be used by the
+			incrementation of the column number and by the functions		
+			This way the $notime variable's value will be always the default '3'	
+			I have also made the sending the var from PHP to JS: $nodates is nd.
+		-->
 		<?php
-			/*  Initializing the JS n variable instead of $notime, that will be used by the incrementation of the column number and by the functions
-					This way the $notime variable's value will be always the default '3'	
-					I have also made the sending the var from PHP to JS: $nodates ->  s nd.*/
-			echo "<script>var nd=".$nodates.";"; 	
+			
+			
+			echo "<script type='text/javascript'> var nd=".$nodates.";"; 	
 			echo "var nt=".$notime.";</script>"; 	?>
 			<form id="form_idopontok" action="beallitasok.php" method="POST" onsubmit="return checkTimeColl(nd,nt)">
 				<table class="table table-striped" border="1">
-					<tr id="new_time0"><th></th>
+					<tr id="new_time0"><th></th>	
 					<?php
 						for($i=1;$i<=$notime;$i++) 							//Default number is three
 							echo "<th>" . $i . ". időpont</th>";  
@@ -194,10 +201,10 @@
 							echo "<tr  id='new_time".$j."'><td><b>" . $_POST[$j] ."</b></td>";						 //The format of the date written out's to be changed!!
 							for($k=1;$k<=$notime;$k++) { 									
 									//Default number is three
-								echo '<td><div class="input-group bootstrap-timepicker timepicker col-xs-4">';
-								echo '<input id="timepicker" name="'.$j.'.'.$k.'" class="form-control" data-template="modal" data-minute-step="1" data-modal-backdrop="true" type="text"/>';	//Is it fitting by space??
-						echo '</div></td>';
-}
+								echo "<td><div class='input-group bootstrap-timepicker timepicker col-xs-4'>";
+								echo "<input id='timepicker' name='".$j.".".$k."' class='form-control' data-template='modal' data-minute-step='1' data-modal-backdrop='true' type='text'/>";	//Is it fitting by space??
+								echo "</div></td>";
+								}
 							echo "</tr>";
 						}
 					?>
